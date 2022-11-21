@@ -1,0 +1,16 @@
+ms:
+  gateway:
+    kafka:
+      consumer:
+        bootstrapServer: localhost:29092
+        groupId: kafka-gateway
+        topic: request-gateway-topic
+      producer:
+        bootstrapServer: localhost:29092
+        resultTopic: result-gateway-topic
+        errorTopic: error-gateway-topic
+
+spring:
+  h2:
+    console:
+      enabled: true
