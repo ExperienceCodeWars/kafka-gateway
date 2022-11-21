@@ -20,7 +20,8 @@ public class VerifyService {
     private final KafkaProducerResultTopic producer;
 
     public void verifyClientOperation(Request request, Acknowledgment acknowledgment) {
-        Optional.ofNullable(clientRepository.findByTypeAndAccount(request.getClientType(), request.getAccount()))
+        Optional.ofNullable(clientRepository.findByTypeAndAccount(request.getClient().getClientType().getCodeName(),
+                        request.getClient().getAccountNumber()))
                 .ifPresentOrElse(client -> producer.sendDtoToKafkaAndAcknowledge(new Response()
                                 .setMessageId(request.getMessageId())
                                 .setOperationStatus("success")

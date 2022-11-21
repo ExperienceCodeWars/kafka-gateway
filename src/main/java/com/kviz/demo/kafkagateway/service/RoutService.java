@@ -20,11 +20,11 @@ public class RoutService {
 
     public void defineOperation(Request request, Acknowledgment acknowledgment) {
         log.info(">>> defineOperation");
-        if (request.getOperationType().equals(OperationTypeEnum.ADD_CLIENT.getType())) {
+        if (request.getOperationType().equalsIgnoreCase(OperationTypeEnum.ADD_CLIENT.getType())) {
             addService.addClientOperation(request, acknowledgment);
-        } else if (request.getOperationType().equals(OperationTypeEnum.VERIFY_CLIENT.getType())) {
+        } else if (request.getOperationType().equalsIgnoreCase(OperationTypeEnum.VERIFY_CLIENT.getType())) {
             verifyService.verifyClientOperation(request, acknowledgment);
-        } else if (request.getOperationType().equals(OperationTypeEnum.DELETE_CLIENT.getType())) {
+        } else if (request.getOperationType().equalsIgnoreCase(OperationTypeEnum.DELETE_CLIENT.getType())) {
             deleteService.deleteClientOperation(request, acknowledgment);
         } else {
             handler.handleAnUnsupportedOperation(request, acknowledgment);

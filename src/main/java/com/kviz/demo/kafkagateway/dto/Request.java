@@ -1,8 +1,10 @@
 package com.kviz.demo.kafkagateway.dto;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -14,9 +16,6 @@ public class Request {
     private String operationType;
     @NotNull(message = "Can not be null")
     private String senderSystemCode;
-    @NotNull(message = "Can not be null")
-    private String clientType;
-    private String clientFullName;
-    @NotNull(message = "Can not be null")
-    private String account;
+    @Valid
+    private Client client;
 }

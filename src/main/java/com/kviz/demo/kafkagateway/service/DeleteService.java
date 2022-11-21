@@ -21,7 +21,8 @@ public class DeleteService {
 
     public void deleteClientOperation(Request request, Acknowledgment acknowledgment) {
         var listClient = clientRepository.findAll().stream()
-                .filter(client -> client.getAccount().equals(request.getAccount()) && client.getType().equals(request.getClientType()))
+                .filter(client -> client.getAccount().equals(request.getClient().getAccountNumber()) && client.getType()
+                        .equals(request.getClient().getClientType().getName()))
                 .collect(Collectors.toList());
         var response = new Response()
                 .setOperationType(request.getOperationType())
@@ -36,7 +37,8 @@ public class DeleteService {
                     .setOperationStatus("fail")
                     .setErrorMessage("client is missing");
         } else {
-            clientRepository.deleteByTypeAndAccount(request.getClientType(), request.getAccount());
+            clientRepository.deleteByTypeAndAccount(request.getClient().getClientType().getCodeName(),
+                    request.getClient().getAccountNumber());
             response = new Response()
                     .setOperationStatus("success");
         }

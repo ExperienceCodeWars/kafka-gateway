@@ -3,20 +3,17 @@ package com.kviz.demo.kafkagateway.dto;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-
-@Accessors(chain = true)
 @Data
-public class Response {
+@Accessors(chain = true)
+public class Client {
     @NotNull(message = "Can not be null")
-    private String messageId;
+    private ClientType clientType;
+    private String clientFullName;
     @NotNull(message = "Can not be null")
-    private String operationType;
+    private String accountNumber;
     @NotNull(message = "Can not be null")
-    private String operationStatus;
-    @Valid
-    private Client client;
-    private String errorMessage;
+    private String activeStatus;
+    private String inn;
 }

@@ -1,0 +1,16 @@
+{
+  "Request": {
+    "messageId": "1",
+    "operationType": "ADD",
+    "senderSystemCode": "SBER",
+    "Client": {
+      "ClientType": {
+        "codeName": "INDIVIDUAL",
+        "name": "Физическое лицо"
+      },
+      "clientFullName": "Petrov Petr Petrovich",
+      "account": "4276 1231 1241 1241",
+      "inn": "12345678910"
+    }
+  }
+}

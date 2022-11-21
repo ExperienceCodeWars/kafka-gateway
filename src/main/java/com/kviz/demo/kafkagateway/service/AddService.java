@@ -20,21 +20,25 @@ public class AddService {
     private final KafkaProducerResultTopic producer;
 
     public void addClientOperation(Request request, Acknowledgment acknowledgment) {
-        Optional.ofNullable(clientRepository.findByTypeAndAccount(request.getClientType(), request.getAccount()))
+        log.info(">>> addClientOperation");
+        Optional.ofNullable(clientRepository.findByTypeAndAccount(request.getClient().getClientType().getCodeName(),
+                        request.getClient().getAccountNumber()))
                 .ifPresentOrElse(client -> producer.sendDtoToKafkaAndAcknowledge(
                                 new Response()
                                         .setErrorMessage("client already exists")
+                                        .setOperationStatus("fail")
                                         .setOperationType(request.getOperationType())
                                         .setMessageId(request.getMessageId()), acknowledgment),
                         () -> {
                             clientRepository.save(new Client()
-                                    .setAccount(request.getAccount())
-                                    .setFullName(request.getClientFullName())
-                                    .setType(request.getClientType()));
+                                    .setAccount(request.getClient().getAccountNumber())
+                                    .setFullName(request.getClient().getClientFullName())
+                                    .setType(request.getClient().getClientType().getCodeName()));
                             producer.sendDtoToKafkaAndAcknowledge(new Response()
                                     .setOperationType(request.getOperationType())
                                     .setOperationStatus("success")
                                     .setMessageId(request.getMessageId()), acknowledgment);
                         });
+        log.info("<<< addClientOperation");
     }
 }
