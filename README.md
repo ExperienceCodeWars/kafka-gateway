@@ -8,14 +8,15 @@
     "messageId": "1",
     "operationType": "ADD",
     "senderSystemCode": "SBER",
-    "Client": {
-      "ClientType": {
+    "client": {
+      "clientType": {
         "codeName": "INDIVIDUAL",
         "name": "Физическое лицо"
       },
       "clientFullName": "Petrov Petr Petrovich",
-      "account": "4276 1231 1241 1241",
-      "inn": "12345678910"
+      "accountNumber": "4276 1231 1241 1241",
+      "inn": "12345678910",
+	    "activeStatus" : "active" 
     }
   }
 }
@@ -27,14 +28,15 @@
     "messageId": "1",
     "operationType": "Delete",
     "senderSystemCode": "SBER",
-    "Client": {
-      "ClientType": {
+    "client": {
+      "clientType": {
         "codeName": "INDIVIDUAL",
         "name": "Физическое лицо"
       },
       "clientFullName": "Petrov Petr Petrovich",
-      "account": "4276 1231 1241 1241",
-      "inn": "12345678910"
+      "accountNumber": "4276 1231 1241 1241",
+      "inn": "12345678910",
+	    "activeStatus" : "active"
     }
   }
 }
@@ -46,14 +48,15 @@
     "messageId": "1",
     "operationType": "Verify",
     "senderSystemCode": "SBER",
-    "Client": {
-      "ClientType": {
+    "client": {
+      "clientType": {
         "codeName": "INDIVIDUAL",
         "name": "Физическое лицо"
       },
       "clientFullName": "Petrov Petr Petrovich",
-      "account": "4276 1231 1241 1241",
-      "inn": "12345678910"
+      "accountNumber": "4276 1231 1241 1241",
+      "inn": "12345678910",
+	    "activeStatus" : "active"
     }
   }
 }
