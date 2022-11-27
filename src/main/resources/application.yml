@@ -2,11 +2,11 @@ ms:
   gateway:
     kafka:
       consumer:
-        bootstrapServer: localhost:29092
+        bootstrapServer: ${KAFKA_BOOTSTRAP_SERVER:0.0.0.0:9092}
         groupId: kafka-gateway
         topic: request-gateway-topic
       producer:
-        bootstrapServer: localhost:29092
+        bootstrapServer: ${KAFKA_BOOTSTRAP_SERVER:0.0.0.0:9092}
         resultTopic: result-gateway-topic
         errorTopic: error-gateway-topic
 
